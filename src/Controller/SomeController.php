@@ -20,8 +20,19 @@ class SomeController extends AppController
             $sql_url = '' . $part[0] . '/' . $part[1] . '/' . $part[2] . '/' . $part[3] . '/' . $part[4] . '/';
         }
 
-        $statement = file_get_contents($sql_url.''.'mysql.sql'); //Replace cakeblog.sql with the name of your SQL file.
+        //Remove or comment out these lines to use this script for version control.
+        $statement = file_get_contents($sql_url.''.'/mysql/initial.sql'); //Replace initial.sql with the name of your SQL file.
         $db->query($statement); //Execute SQL file.
+
+        /* Uncomment for version control!
+        $versions_array = scandir($sql_url.'/mysql/'); //If you need to reverse the order add ", 1" after "/mysql/'"
+        $clean_dir = array('.', '..');
+        $versions_array_cleaned = array_diff(scandir($versions_array), $clean_dir);
+        foreach ($versions_array_cleaned as $version) {
+            $statement = file_get_contents($sql_url.''.'/mysql/'.$version.'');
+            $db->query($statement); //Execute version
+        }
+        */
 
         $full_url = 'http://'.$_SERVER['HTTP_HOST'].''; //You can replace this with whatever URL you want or remove it for a CakePHP route.
         return $this->redirect($full_url);
