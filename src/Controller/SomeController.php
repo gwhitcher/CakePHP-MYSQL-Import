@@ -20,7 +20,7 @@ class SomeController extends AppController
             $sql_url = '' . $part[0] . '/' . $part[1] . '/' . $part[2] . '/' . $part[3] . '/' . $part[4] . '/';
         }
 
-        //Remove or comment out these lines to use this script for version control.
+        //Remove or comment out these two lines to use this script for version control.
         $statement = file_get_contents($sql_url.''.'/mysql/initial.sql'); //Replace initial.sql with the name of your SQL file.
         $db->query($statement); //Execute SQL file.
 
