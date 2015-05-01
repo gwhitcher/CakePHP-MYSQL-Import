@@ -27,7 +27,7 @@ class SomeController extends AppController
         /* Uncomment for version control!
         $versions_array = scandir($sql_url.'/mysql/'); //If you need to reverse the order add ", 1" after "/mysql/'"
         $clean_dir = array('.', '..');
-        $versions_array_cleaned = array_diff(scandir($versions_array), $clean_dir);
+        $versions_array_cleaned = array_diff(scandir($sql_url.'/mysql/'), $clean_dir);
         foreach ($versions_array_cleaned as $version) {
             $statement = file_get_contents($sql_url.''.'/mysql/'.$version.'');
             $db->query($statement); //Execute version
