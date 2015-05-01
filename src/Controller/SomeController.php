@@ -25,9 +25,10 @@ class SomeController extends AppController
         $db->query($statement); //Execute SQL file.
 
         /* Uncomment for version control!
-        $versions_array = scandir($sql_url.'/mysql/'); //If you need to reverse the order add ", 1" after "/mysql/'"
+        $version_order = 1; //Descending order.  Change to 0 for ascending order.
+        $versions_array = scandir($sql_url.'/mysql/', $version_order);
         $clean_dir = array('.', '..');
-        $versions_array_cleaned = array_diff(scandir($sql_url.'/mysql/'), $clean_dir);
+        $versions_array_cleaned = array_diff(scandir($sql_url.'/mysql/', $version_order), $clean_dir);
         foreach ($versions_array_cleaned as $version) {
             $statement = file_get_contents($sql_url.''.'/mysql/'.$version.'');
             $db->query($statement); //Execute version
